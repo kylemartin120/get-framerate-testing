@@ -1,7 +1,7 @@
 #!/bin/bash
 
-declare -a thres=(300, 3600, 7200)
-declare -a num=(25, 100)
+declare -a thres=(300 3600 7200)
+declare -a num=(25 100)
 
 for filename in *.txt; do
     num_lines=$(wc -l < $filename)
