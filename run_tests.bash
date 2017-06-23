@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ $# -gt 0 ]; then
+    password=$1
+else
+    password="\"\""
+fi
+
 declare -a thres=(300 3600 7200)
 declare -a num=(25 100)
 
@@ -10,7 +16,7 @@ for filename in *.txt; do
 	    for (( j=0 ; j<2 ; j++ )); do
 		dir="${filename}__${thres[$i]}_${num[$j]}"
 	    	python getFramerate.py -t ${thres[$i]} -r 1000000 -d $dir\
-		       -p password -f $filename -n ${num[$j]}
+		       -p $password -f $filename -n ${num[$j]}
 	    done
 	done
     fi
