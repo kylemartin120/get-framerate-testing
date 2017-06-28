@@ -14,8 +14,10 @@ for filename in *.txt; do
     if [[ $num_lines -gt 99 ]]; then
 	for (( j=0 ; j<2 ; j++ )); do
 	    dir="${filename}__${THRES}_${NUM}_${j}"
-	    python getFramerate.py -t $THRES -r 1000000 -d $dir\
-		   -p $password -f $filename -n $NUM
+	    if [ -d "$dir" ]; then
+		python getFramerate.py -t $THRES -r 1000000 -d $dir\
+		       -p $password -f $filename -n $NUM
+	    fi
 	done
     fi
 done
